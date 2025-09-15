@@ -1,4 +1,6 @@
 import { use, useState } from "react";
+import { Link } from "react-router";
+
 import { MdOutlineSettings, MdOutlinePeopleAlt } from "react-icons/md";
 import { PiHouseBold } from "react-icons/pi";
 import { FaRegFileAlt, FaRegBell } from "react-icons/fa";
@@ -28,67 +30,79 @@ const SideBar = () => {
       </div>
 
       <nav className="flex-1 p-4 space-y-2">
-        <a href="#" className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]">
-          <div className="flex gap-1 items-center sidebarOption">
+        <Link
+          to={{ pathname: "/" }}
+          className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
+        >
+          <div className="flex gap-1 items-center ">
             <PiHouseBold className="sidebarOptionText" size={26} />
             <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
               Inicio
             </p>
           </div>
-        </a>
+        </Link>
         {userType === "atention" && (
           <div>
-            <a
-              href="#"
-              className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]"
+            <Link
+              to={{ pathname: "/" }}
+              className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
             >
-              <div className="flex gap-1 items-center sidebarOption">
+              <div className="flex gap-1 items-center">
                 <MdOutlinePeopleAlt className="sidebarOptionText" size={26} />
                 <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
                   Clientes
                 </p>
               </div>
-            </a>
-            <a
-              href="#"
-              className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]"
+            </Link>
+            <Link
+              to={{ pathname: "/" }}
+              className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
             >
-              <div className="flex gap-1 items-center sidebarOption">
+              <div className="flex gap-1 items-center ">
                 <FaRegFileAlt className="sidebarOptionText" size={26} />
                 <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
                   OT's
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
         )}
         <p className="block px-3 py-2 rounded-md text-[#909191] text-lg font-normal">
           Opciones
         </p>
-        <a href="#" className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]">
-          <div className="flex gap-1 items-center sidebarOption">
+        <Link
+          to={{ pathname: "/" }}
+          className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
+        >
+          <div className="flex gap-1 items-center ">
             <FaRegBell className="sidebarOptionText" size={26} />
             <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
               Notificaciones
             </p>
           </div>
-        </a>
-        <a href="#" className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]">
-          <div className="flex gap-1 items-center sidebarOption ">
+        </Link>
+        <Link
+          to={{ pathname: "/" }}
+          className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
+        >
+          <div className="flex gap-1 items-center  ">
             <MdOutlineSettings className="sidebarOptionText" size={26} />
             <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
               Configuración
             </p>
           </div>
-        </a>
-        <a href="#" className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]">
-          <div className="flex gap-1 items-center sidebarOption">
+        </Link>
+        <Link
+          to={{ pathname: "/" }}
+          className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
+        >
+          <div className="flex gap-1 items-center ">
             <RiFolderInfoLine className="sidebarOptionText" size={26} />
             <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
               Ayuda
             </p>
           </div>
-        </a>
+        </Link>
       </nav>
 
       <div className="py-4 px-10 text-xl font-bold  flex gap-4  items-center">
