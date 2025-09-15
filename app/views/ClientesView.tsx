@@ -1,12 +1,12 @@
 import SideBar from "~/components/sideBar";
 
-const HomeView = () => {
+const ClientesView = () => {
   return (
     <main>
       <SideBar />
-      <h1 className="bg-red-400">Home View</h1>
+      <p>Clinetes vista</p>
     </main>
   );
 };
 
-export default HomeView;
+export default ClientesView;
