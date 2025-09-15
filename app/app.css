@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+.sidebarOption {
+  text-decoration: none;
+}
+.sidebarOptionText {
+  color: #5d5f5f;
+}
+.sidebarOption:hover .sidebarOptionText {
+  color: #487bac;
+}

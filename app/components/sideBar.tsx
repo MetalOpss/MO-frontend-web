@@ -29,9 +29,11 @@ const SideBar = () => {
 
       <nav className="flex-1 p-4 space-y-2">
         <a href="#" className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]">
-          <div className="flex gap-1 items-center">
-            <PiHouseBold color="#5D5F5F" size={26} />
-            <p className="text-[#5D5F5F] text-xl font-normal">Inicio</p>
+          <div className="flex gap-1 items-center sidebarOption">
+            <PiHouseBold className="sidebarOptionText" size={26} />
+            <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
+              Inicio
+            </p>
           </div>
         </a>
         {userType === "atention" && (
@@ -40,18 +42,22 @@ const SideBar = () => {
               href="#"
               className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]"
             >
-              <div className="flex gap-1 items-center">
-                <MdOutlinePeopleAlt color="#5D5F5F" size={26} />
-                <p className="text-[#5D5F5F] text-xl font-normal">Clientes</p>
+              <div className="flex gap-1 items-center sidebarOption">
+                <MdOutlinePeopleAlt className="sidebarOptionText" size={26} />
+                <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
+                  Clientes
+                </p>
               </div>
             </a>
             <a
               href="#"
               className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]"
             >
-              <div className="flex gap-1 items-center">
-                <FaRegFileAlt color="#5D5F5F" size={24} />
-                <p className="text-[#5D5F5F] text-xl font-normal">OT's</p>
+              <div className="flex gap-1 items-center sidebarOption">
+                <FaRegFileAlt className="sidebarOptionText" size={26} />
+                <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
+                  OT's
+                </p>
               </div>
             </a>
           </div>
@@ -60,21 +66,27 @@ const SideBar = () => {
           Opciones
         </p>
         <a href="#" className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]">
-          <div className="flex gap-1 items-center">
-            <FaRegBell color="#5D5F5F" size={24} />
-            <p className="text-[#5D5F5F] text-xl font-normal">Notificaciones</p>
+          <div className="flex gap-1 items-center sidebarOption">
+            <FaRegBell className="sidebarOptionText" size={26} />
+            <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
+              Notificaciones
+            </p>
           </div>
         </a>
         <a href="#" className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]">
-          <div className="flex gap-1 items-center">
-            <MdOutlineSettings color="#5D5F5F" size={26} />
-            <p className="text-[#5D5F5F] text-xl font-normal">Configuración</p>
+          <div className="flex gap-1 items-center sidebarOption ">
+            <MdOutlineSettings className="sidebarOptionText" size={26} />
+            <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
+              Configuración
+            </p>
           </div>
         </a>
         <a href="#" className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff]">
-          <div className="flex gap-1 items-center">
-            <RiFolderInfoLine color="#5D5F5F" size={26} />
-            <p className="text-[#5D5F5F] text-xl font-normal">Ayuda</p>
+          <div className="flex gap-1 items-center sidebarOption">
+            <RiFolderInfoLine className="sidebarOptionText" size={26} />
+            <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
+              Ayuda
+            </p>
           </div>
         </a>
       </nav>
