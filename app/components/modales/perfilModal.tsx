@@ -1,13 +1,12 @@
-import { Link } from "react-router";
 import { FaRegUserCircle } from "react-icons/fa";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 
-const PerfilModal = () => {
+const PerfilModal = ({ onClose }: { onClose: () => void }) => {
   return (
-    <div className="relative flex max-w-[900px] max-h-[922px] mx-auto bg-white rounded-2xl shadow-lg overflow-hidden ">
+    <div className="relative flex min-w-[800px] max-w-[900px] max-h-[922px] mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
       <div className="w-[238px] bg-[#F9F9F9] border-r border-gray-200 flex flex-col">
-        <button className="self-start p-4 ">
+        <button onClick={onClose} className="self-start p-4 ">
           <IoClose color="#5D5F5F" size={25} />
         </button>
 

@@ -9,9 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Hola() {
-  return (
-    <div className="">
-      <PerfilModal />
-    </div>
-  );
+  return <div className="">{/* <PerfilModal /> */}</div>;
 }
