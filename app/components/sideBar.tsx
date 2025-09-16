@@ -105,7 +105,7 @@ const SideBar = () => {
         </Link>
       </nav>
 
-      <div className="py-4 px-10 text-xl font-bold  flex gap-4  items-center">
+      <button className="py-4 px-10 text-xl font-bold  flex gap-4  items-center">
         <div className="w-12 h-12 rounded-full overflow-hidden">
           <img src="../public/bigsmoke.jpg" alt="logo" />
         </div>
@@ -113,7 +113,7 @@ const SideBar = () => {
         <div className="max-w-[130px]">
           <p className="text-[#1A1C1C] text-xl font-normal">Big Smoke</p>
         </div>
-      </div>
+      </button>
     </div>
   );
 };
