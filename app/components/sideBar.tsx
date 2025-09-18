@@ -61,7 +61,7 @@ const SideBar = () => {
                 </div>
               </Link>
               <Link
-                to={{ pathname: "/" }}
+                to={{ pathname: "/ots" }}
                 className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
               >
                 <div className="flex gap-1 items-center ">
