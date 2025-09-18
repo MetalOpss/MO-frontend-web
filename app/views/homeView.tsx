@@ -31,7 +31,7 @@ const HomeView = () => {
             Jueves, 4 de septiembre
           </p>
         </div>
-        <div className="flex gap-6 flex-wrap">
+        <div className="flex gap-6 max-w-[1139px]">
           {data.map((item, key) => (
             <InfoCard
               key={key}
