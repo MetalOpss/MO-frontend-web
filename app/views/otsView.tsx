@@ -1,7 +1,6 @@
 import SideBar from "~/components/sideBar";
 import Layout from "~/components/layout";
 import InfoCard from "~/components/cards/infoCard";
-import OTSection from "~/components/otSection";
 import Filters from "~/components/fillter";
 
 import { AiOutlineSearch } from "react-icons/ai";
@@ -9,39 +8,42 @@ import { GoPlus } from "react-icons/go";
 
 const data = [
   {
-    texto: "Totales",
-    numero: 15,
+    texto: "En registro",
+    numero: 100,
   },
   {
-    texto: "Activos",
-    numero: 3,
+    texto: "Sin diseño",
+    numero: 50,
   },
   {
-    texto: "Inactivos",
-    numero: 3,
+    texto: "En ejecución",
+    numero: 20,
+  },
+  {
+    texto: "Por correción",
+    numero: 20,
   },
 ];
-
-const ClientesView = () => {
+const OtsView = () => {
   return (
     <Layout>
       <SideBar />
       <div className="flex flex-col gap-6">
         <div className="flex items-center justify-between mb-2 max-w-[1139px]">
-          <h1 className="font-medium text-4xl">Clientes</h1>
+          <h1 className="font-medium text-4xl">Ordenes de Trabajo</h1>
           <div className="flex gap-3">
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 text-gray-700">
               <AiOutlineSearch size={20} color="767777" />
               <input
                 type="text"
-                placeholder="Buscar Cliente"
+                placeholder="Buscar OT"
                 className="bg-transparent outline-none text-gray-700 placeholder-gray-500"
               />
             </div>
 
             <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#366a9a] text-white">
               <GoPlus size={20} color="FFFFFF" />
-              <p>Registrar Cliente</p>
+              <p>Registrar OT</p>
             </button>
           </div>
         </div>
@@ -51,17 +53,22 @@ const ClientesView = () => {
           ))}
         </div>
         <Filters />
-        {[1, 2, 3, 4].map((_, index) => (
+        {[1, 2, 3].map((_, index) => (
           <div
             key={index}
-            className="flex items-center justify-between max-w-[1139px] bg-gray-50 rounded-2xl px-4 py-3"
+            className="flex flex-col gap-4 justify-between max-w-[1139px] bg-gray-50 rounded-2xl px-4 py-3"
           >
             <div>
               <p className="text-xl font-medium text-[#1A1C1C]">
-                {"Nombre del Cliente"}
+                {"Nombre de la OT"}
               </p>
-              <p className="text-lg font-medium text-[#5D5F5F]">{"DNI/RUC"}</p>
+              <p className="text-lg font-medium text-[#5D5F5F]">
+                {"11 Sep, 8:00 AM"}
+              </p>
             </div>
+            <span className="text-[12px] w-fit px-3 py-1 rounded-full font-medium bg-[#F0F1F1] text-[#1A1C1C]">
+              En registro
+            </span>
           </div>
         ))}
       </div>
@@ -69,4 +76,4 @@ const ClientesView = () => {
   );
 };
 
-export default ClientesView;
+export default OtsView;
