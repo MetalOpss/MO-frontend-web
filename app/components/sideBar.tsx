@@ -128,7 +128,7 @@ const SideBar = () => {
 
       {isModalOpen && (
         <div
-          className="fixed inset-0 bg-black/75 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
           onClick={() => setIsModalOpen(false)}
         >
           <div onClick={(e) => e.stopPropagation()}>
