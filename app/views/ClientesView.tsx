@@ -1,11 +1,13 @@
+import { useState } from "react";
 import SideBar from "~/components/sideBar";
 import Layout from "~/components/layout";
 import InfoCard from "~/components/cards/infoCard";
-import OTSection from "~/components/otSection";
 import Filters from "~/components/fillter";
 
 import { AiOutlineSearch } from "react-icons/ai";
 import { GoPlus } from "react-icons/go";
+
+import RegistrarClienteModal from "~/components/modales/registrarClienteModal";
 
 const data = [
   {
@@ -23,6 +25,8 @@ const data = [
 ];
 
 const ClientesView = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <Layout>
       <SideBar />
@@ -39,18 +43,24 @@ const ClientesView = () => {
               />
             </div>
 
-            <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#366a9a] text-white">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#366a9a] text-white"
+            >
               <GoPlus size={20} color="FFFFFF" />
               <p>Registrar Cliente</p>
             </button>
           </div>
         </div>
+
         <div className="flex gap-6 max-w-[1139px]">
           {data.map((item, key) => (
             <InfoCard key={key} texto={item.texto} numero={item.numero} />
           ))}
         </div>
+
         <Filters />
+
         {[1, 2, 3, 4].map((_, index) => (
           <div
             key={index}
@@ -65,6 +75,17 @@ const ClientesView = () => {
           </div>
         ))}
       </div>
+
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div onClick={(e) => e.stopPropagation()}>
+            <RegistrarClienteModal onClose={() => setIsModalOpen(false)} />
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };
