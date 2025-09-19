@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SideBar from "~/components/sideBar";
 import Layout from "~/components/layout";
 import InfoCard from "~/components/cards/infoCard";
@@ -5,6 +6,8 @@ import Filters from "~/components/fillter";
 
 import { AiOutlineSearch } from "react-icons/ai";
 import { GoPlus } from "react-icons/go";
+
+import CrearOtModal from "~/components/modales/crearOtModal";
 
 const data = [
   {
@@ -25,6 +28,7 @@ const data = [
   },
 ];
 const OtsView = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <Layout>
       <SideBar />
@@ -41,7 +45,10 @@ const OtsView = () => {
               />
             </div>
 
-            <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#366a9a] text-white">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#366a9a] text-white"
+            >
               <GoPlus size={20} color="FFFFFF" />
               <p>Registrar OT</p>
             </button>
@@ -72,6 +79,16 @@ const OtsView = () => {
           </div>
         ))}
       </div>
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div onClick={(e) => e.stopPropagation()}>
+            <CrearOtModal onClose={() => setIsModalOpen(false)} />
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };
