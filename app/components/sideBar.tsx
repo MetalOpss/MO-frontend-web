@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { NavLink } from "react-router";
 
 import { MdOutlineSettings, MdOutlinePeopleAlt } from "react-icons/md";
 import { PiHouseBold } from "react-icons/pi";
@@ -20,8 +20,8 @@ const SideBar = () => {
 
   return (
     <>
-      <div className="fixed left-0 top-0 h-screen max-w-[343px] w-full bg-white text-white shadow-lg flex flex-col p-5">
-        <div className="py-4 px-10 text-xl font-bold  flex gap-4  items-center">
+      <div className="fixed left-0 top-0 h-screen max-w-[343px] w-full bg-white shadow-lg flex flex-col p-5">
+        <div className="py-4 px-10 text-xl font-bold flex gap-4 items-center">
           <img src="../public/logo.png" alt="logo" />
           <div className="max-w-[130px]">
             <h1 className="text-[#1A1C1C] text-xl font-normal">MetalOps</h1>
@@ -38,82 +38,89 @@ const SideBar = () => {
         </div>
 
         <nav className="flex-1 p-4 space-y-2">
-          <Link
-            to={{ pathname: "/" }}
-            className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              ` px-6 py-2 rounded-3xl flex gap-1 items-center 
+              ${
+                isActive
+                  ? "bg-[#366a9a] text-white"
+                  : "hover:bg-[#dfecff] text-[#5D5F5F] hover:text-[#366a9a]"
+              }`
+            }
           >
-            <div className="flex gap-1 items-center ">
-              <PiHouseBold className="sidebarOptionText" size={26} />
-              <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
-                Inicio
-              </p>
-            </div>
-          </Link>
+            <PiHouseBold size={26} className="" />
+            <p className="text-xl font-normal ">Inicio</p>
+          </NavLink>
 
           {userType === "atention" && (
-            <div>
-              <Link
-                to={{ pathname: "/clientes" }}
-                className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
+            <>
+              <NavLink
+                to="/clientes"
+                className={({ isActive }) =>
+                  ` px-6 py-2 rounded-3xl sidebarOption flex gap-1 items-center 
+                  ${
+                    isActive
+                      ? "bg-[#366a9a] text-white"
+                      : "hover:bg-[#dfecff] text-[#5D5F5F] hover:text-[#366a9a]"
+                  }`
+                }
               >
-                <div className="flex gap-1 items-center">
-                  <MdOutlinePeopleAlt className="sidebarOptionText" size={26} />
-                  <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
-                    Clientes
-                  </p>
-                </div>
-              </Link>
-              <Link
-                to={{ pathname: "/ots" }}
-                className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
+                <MdOutlinePeopleAlt size={26} />
+                <p className="text-xl font-normal">Clientes</p>
+              </NavLink>
+
+              <NavLink
+                to="/ots"
+                className={({ isActive }) =>
+                  ` px-6 py-2 rounded-3xl sidebarOption flex gap-1 items-center 
+                  ${
+                    isActive
+                      ? "bg-[#366a9a] text-white"
+                      : "hover:bg-[#dfecff] text-[#5D5F5F] hover:text-[#366a9a]"
+                  }`
+                }
               >
-                <div className="flex gap-1 items-center ">
-                  <FaRegFileAlt className="sidebarOptionText" size={26} />
-                  <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
-                    OT's
-                  </p>
-                </div>
-              </Link>
-            </div>
+                <FaRegFileAlt size={26} />
+                <p className="text-xl font-normal">OT's</p>
+              </NavLink>
+            </>
           )}
 
           <p className="block px-3 py-2 rounded-md text-[#909191] text-lg font-normal">
             Opciones
           </p>
-          {/*Botón de Notificaciones */}
+
+          {/* Botón Notificaciones */}
           <button
             onClick={() => setIsNotificacionesModalOpen(true)}
-            className="w-full text-left block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
+            className="w-full text-left  px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption flex gap-1 items-center"
           >
-            <div className="flex gap-1 items-center ">
-              <FaRegBell className="sidebarOptionText" size={26} />
-              <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
-                Notificaciones
-              </p>
-            </div>
+            <FaRegBell size={26} className="sidebarOptionText" />
+            <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
+              Notificaciones
+            </p>
           </button>
-          <Link
-            to={{ pathname: "/" }}
-            className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
+          {/* Botón Configuracion */}
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="w-full text-left  px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption flex gap-1 items-center"
           >
-            <div className="flex gap-1 items-center  ">
-              <MdOutlineSettings className="sidebarOptionText" size={26} />
-              <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
-                Configuración
-              </p>
-            </div>
-          </Link>
-          <Link
-            to={{ pathname: "/" }}
-            className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
+            <MdOutlineSettings size={26} className="sidebarOptionText" />
+            <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
+              Configuración
+            </p>
+          </button>
+          {/* Botón ayuda */}
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="w-full text-left  px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption flex gap-1 items-center"
           >
-            <div className="flex gap-1 items-center ">
-              <RiFolderInfoLine className="sidebarOptionText" size={26} />
-              <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
-                Ayuda
-              </p>
-            </div>
-          </Link>
+            <RiFolderInfoLine size={26} className="sidebarOptionText" />
+            <p className="text-[#5D5F5F] text-xl font-normal sidebarOptionText">
+              Ayuda
+            </p>
+          </button>
         </nav>
 
         <button
@@ -129,6 +136,7 @@ const SideBar = () => {
         </button>
       </div>
 
+      {/* Perfil Modal */}
       {isModalOpen && (
         <div
           className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
@@ -139,7 +147,8 @@ const SideBar = () => {
           </div>
         </div>
       )}
-      {/* Modal Notificaciones */}
+
+      {/* Notificaciones Modal */}
       {isNotificacionesModalOpen && (
         <div
           className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
