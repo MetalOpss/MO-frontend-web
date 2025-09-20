@@ -7,6 +7,7 @@ import { FaRegFileAlt, FaRegBell } from "react-icons/fa";
 import { RiFolderInfoLine } from "react-icons/ri";
 
 import PerfilModal from "./modales/perfilModal";
+import NotificacionesModal from "./modales/notificacionesModal";
 
 const SideBar = () => {
   const [userType, setUserType] = useState<
@@ -14,6 +15,8 @@ const SideBar = () => {
   >("atention");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isNotificacionesModalOpen, setIsNotificacionesModalOpen] =
+    useState(false);
 
   return (
     <>
@@ -77,10 +80,10 @@ const SideBar = () => {
           <p className="block px-3 py-2 rounded-md text-[#909191] text-lg font-normal">
             Opciones
           </p>
-
-          <Link
-            to={{ pathname: "/" }}
-            className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
+          {/*Botón de Notificaciones */}
+          <button
+            onClick={() => setIsNotificacionesModalOpen(true)}
+            className="w-full text-left block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
           >
             <div className="flex gap-1 items-center ">
               <FaRegBell className="sidebarOptionText" size={26} />
@@ -88,7 +91,7 @@ const SideBar = () => {
                 Notificaciones
               </p>
             </div>
-          </Link>
+          </button>
           <Link
             to={{ pathname: "/" }}
             className="block px-6 py-2 rounded-3xl hover:bg-[#dfecff] sidebarOption"
@@ -133,6 +136,22 @@ const SideBar = () => {
         >
           <div onClick={(e) => e.stopPropagation()}>
             <PerfilModal onClose={() => setIsModalOpen(false)} />
+          </div>
+        </div>
+      )}
+      {/* Modal Notificaciones */}
+      {isNotificacionesModalOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
+          onClick={() => setIsNotificacionesModalOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative flex max-w-[1095px] w-full mx-auto bg-white rounded-2xl shadow-lg overflow-hidden p-8"
+          >
+            <NotificacionesModal
+              onClose={() => setIsNotificacionesModalOpen(false)}
+            />
           </div>
         </div>
       )}

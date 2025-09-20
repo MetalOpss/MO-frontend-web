@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LuExpand } from "react-icons/lu";
+import { BiExpandAlt } from "react-icons/bi";
 
 interface OT {
   id: number;
@@ -64,7 +64,9 @@ const OTSection = () => {
                 {ot.estado === "pendiente" ? "asignada" : "finalizada"}
               </span>
             </div>
-            <LuExpand className="text-gray-400" size={18} />
+            <button>
+              <BiExpandAlt className="text-gray-400 hover:text-gray-600" />
+            </button>
           </div>
         ))}
       </div>

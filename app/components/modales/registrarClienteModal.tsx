@@ -2,7 +2,7 @@ import { IoClose } from "react-icons/io5";
 
 const RegistrarClienteModal = ({ onClose }: { onClose: () => void }) => {
   return (
-    <div className="relative flex min-w-[600px] max-w-[700px] max-h-[922px] mx-auto bg-white rounded-2xl shadow-lg overflow-hidden p-8">
+    <div className="relative flex max-w-[1095px] w-full mx-auto bg-white rounded-2xl overflow-hidden p-8">
       <button
         onClick={onClose}
         className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full"
