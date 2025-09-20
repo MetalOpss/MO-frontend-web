@@ -52,7 +52,12 @@ const CrearOtModal: React.FC<CrearOtModalProps> = ({ onClose }) => {
                       : "Paso 5: Adjuntar archivo"}
             </p>
           </h2>
-          <IoClose onClick={onClose} color="#5D5F5F" size={25} />
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-gray-100 rounded-full"
+          >
+            <IoClose color="#5D5F5F" size={25} />
+          </button>
         </div>
 
         {/* Step 1 */}

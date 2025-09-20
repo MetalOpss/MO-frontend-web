@@ -81,7 +81,10 @@ const ClientesView = () => {
           className="fixed inset-0 bg-black/40 flex items-center justify-center z-50"
           onClick={() => setIsModalOpen(false)}
         >
-          <div onClick={(e) => e.stopPropagation()}>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative flex max-w-[1095px] w-full mx-auto bg-white rounded-2xl overflow-hidden p-8"
+          >
             <RegistrarClienteModal onClose={() => setIsModalOpen(false)} />
           </div>
         </div>
