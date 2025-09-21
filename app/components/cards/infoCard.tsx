@@ -15,10 +15,10 @@ const InfoCard: React.FC<InfoCardProps> = ({
 }) => {
   return (
     <div
-      className={`rounded-4xl w-full max-w-[554px] px-5 py-12 border ${bgClass} ${textClass} ${borderClass}`}
+      className={`rounded-2xl sm:rounded-4xl w-full px-3 py-6 sm:px-5 sm:py-8 lg:py-12 border ${bgClass} ${textClass} ${borderClass} `}
     >
-      <p className="font-normal text-2xl">{texto}</p>
-      <h1 className="font-bold text-6xl">{numero}</h1>
+      <p className="font-normal text-lg sm:text-xl lg:text-2xl">{texto}</p>
+      <h1 className="font-bold text-3xl sm:text-4xl lg:text-6xl">{numero}</h1>
     </div>
   );
 };

@@ -3,7 +3,10 @@ import { IoClose } from "react-icons/io5";
 import { FaCirclePlus } from "react-icons/fa6";
 import { FaPaperclip } from "react-icons/fa";
 
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import ServicioCard from "../cards/servicioCard";
+import type { Value } from "react-calendar/dist/shared/types.js";
 
 interface CrearOtModalProps {
   onClose: () => void;
@@ -13,6 +16,11 @@ const CrearOtModal: React.FC<CrearOtModalProps> = ({ onClose }) => {
   const [step, setStep] = useState(1);
   const [services, setServices] = useState<string[]>([]);
   const [file, setFile] = useState<File | null>(null);
+
+  // 👇 Estados para el Paso 4
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedHour, setSelectedHour] = useState<string | null>(null);
+  const [showCalendar, setShowCalendar] = useState(true); // alterna entre calendario y horas
 
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
@@ -26,6 +34,14 @@ const CrearOtModal: React.FC<CrearOtModalProps> = ({ onClose }) => {
       setFile(e.target.files[0]);
     }
   };
+
+  // Formatear fecha en dd/mm/yyyy
+  const formatDate = (date: Date | null) =>
+    date
+      ? `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth() + 1)
+          .toString()
+          .padStart(2, "0")}/${date.getFullYear()}`
+      : "";
 
   return (
     <div
@@ -232,8 +248,109 @@ const CrearOtModal: React.FC<CrearOtModalProps> = ({ onClose }) => {
         )}
         {/* Step 4 */}
         {step === 4 && (
-          <div className="flex flex-col gap-6 mx-auto">
-            <div className="flex justify-between mt-4">
+          <div className="flex flex-col gap-6">
+            {showCalendar ? (
+              // Vista calendario
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="flex-1">
+                  <Calendar
+                    onChange={(value: Value) => {
+                      if (value instanceof Date) {
+                        setSelectedDate(value);
+                        setShowCalendar(false);
+                      }
+                    }}
+                    value={selectedDate}
+                    locale="es-ES"
+                    minDate={new Date()}
+                    className="rounded-2xl shadow-sm p-4"
+                  />
+                </div>
+                <div className="flex flex-col gap-3 flex-1">
+                  <p className="text-lg font-medium">Entrega</p>
+                  <button
+                    onClick={() => setShowCalendar(true)}
+                    className="p-3 bg-gray-50 rounded-xl text-left"
+                  >
+                    {selectedDate ? formatDate(selectedDate) : "Fecha"}
+                  </button>
+                  <button
+                    disabled
+                    className="p-3 bg-gray-50 rounded-xl text-left text-gray-400"
+                  >
+                    Hora
+                  </button>
+                </div>
+              </div>
+            ) : (
+              // Vista horas
+              <div className="flex flex-col sm:flex-row gap-6">
+                <div className="flex-1">
+                  <p className="text-lg font-medium mb-2">
+                    Elige una hora
+                    {selectedDate && (
+                      <span className="block text-gray-500 text-sm">
+                        {selectedDate.toLocaleDateString("es-ES", {
+                          weekday: "long",
+                          day: "numeric",
+                          month: "long",
+                        })}
+                      </span>
+                    )}
+                  </p>
+
+                  <div className="flex flex-col gap-3">
+                    <p className="font-medium">Mañana</p>
+                    {["08:00 am", "09:00 am", "10:00 am", "11:00 am"].map(
+                      (hour) => (
+                        <button
+                          key={hour}
+                          onClick={() => setSelectedHour(hour)}
+                          className={`p-3 rounded-xl text-left ${
+                            selectedHour === hour
+                              ? "bg-[#366A9A] text-white"
+                              : "bg-gray-100"
+                          }`}
+                        >
+                          {hour}
+                        </button>
+                      )
+                    )}
+
+                    <p className="font-medium mt-2">Tarde</p>
+                    {["03:00 pm", "04:00 pm", "05:00 pm", "06:00 pm"].map(
+                      (hour) => (
+                        <button
+                          key={hour}
+                          onClick={() => setSelectedHour(hour)}
+                          className={`p-3 rounded-xl text-left ${
+                            selectedHour === hour
+                              ? "bg-[#366A9A] text-white"
+                              : "bg-gray-100"
+                          }`}
+                        >
+                          {hour}
+                        </button>
+                      )
+                    )}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-3 flex-1">
+                  <p className="text-lg font-medium">Entrega</p>
+                  <button
+                    onClick={() => setShowCalendar(true)}
+                    className="p-3 bg-gray-50 rounded-xl text-left"
+                  >
+                    {selectedDate ? formatDate(selectedDate) : "Fecha"}
+                  </button>
+                  <button className="p-3 bg-gray-50 rounded-xl text-left">
+                    {selectedHour || "Hora"}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            <div className="flex justify-between mt-6">
               <button
                 onClick={prevStep}
                 className="px-6 py-2 bg-gray-200 text-gray-700 rounded-3xl"
@@ -242,7 +359,12 @@ const CrearOtModal: React.FC<CrearOtModalProps> = ({ onClose }) => {
               </button>
               <button
                 onClick={nextStep}
-                className="px-6 py-2 bg-[#366A9A] text-white rounded-3xl"
+                disabled={!selectedDate || !selectedHour}
+                className={`px-6 py-2 rounded-3xl ${
+                  !selectedDate || !selectedHour
+                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    : "bg-[#366A9A] text-white"
+                }`}
               >
                 Siguiente
               </button>

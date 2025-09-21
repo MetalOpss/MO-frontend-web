@@ -24,14 +24,16 @@ const HomeView = () => {
   return (
     <Layout>
       <SideBar />
-      <div className="flex flex-col gap-6">
-        <div className="mb-8">
-          <h1 className="font-medium text-4xl">¡Bienvenido, BigSmoke!</h1>
-          <p className="text-2xl font-normal text-[#5D5F5F]">
+      <div className="flex flex-col gap-4 sm:gap-6">
+        <div className="mb-4 sm:mb-8">
+          <h1 className="font-medium text-2xl sm:text-3xl lg:text-4xl">
+            ¡Bienvenido, BigSmoke!
+          </h1>
+          <p className="text-lg sm:text-xl lg:text-2xl font-normal text-[#5D5F5F]">
             Jueves, 4 de septiembre
           </p>
         </div>
-        <div className="flex gap-6 max-w-[1139px]">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 w-full">
           {data.map((item, key) => (
             <InfoCard
               key={key}
