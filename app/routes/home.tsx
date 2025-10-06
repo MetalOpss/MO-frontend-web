@@ -12,6 +12,6 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  // return <HomeView />;
-  return <ResetPasswordView />;
+  return <HomeView />;
+  // return <ResetPasswordView />;
 }
