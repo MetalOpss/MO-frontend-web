@@ -17,10 +17,9 @@ const CrearOtModal: React.FC<CrearOtModalProps> = ({ onClose }) => {
   const [services, setServices] = useState<string[]>([]);
   const [file, setFile] = useState<File | null>(null);
 
-  // 👇 Estados para el Paso 4
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedHour, setSelectedHour] = useState<string | null>(null);
-  const [showCalendar, setShowCalendar] = useState(true); // alterna entre calendario y horas
+  const [showCalendar, setShowCalendar] = useState(true);
 
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
